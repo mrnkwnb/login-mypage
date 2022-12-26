@@ -16,7 +16,6 @@
             <div class="form">
                 <h1>会員登録</h1>
                 <form method="post" action="register_confirm.php" enctype="multipart/form-data"><!--enctype…は、ファイルをアップロードする為の記述-->
-                 
                     <dl>
                         <dt>
                             <div class="required">
@@ -25,7 +24,6 @@
                             <label for="name">氏名</label>
                         </dt>
                         <dd><input type="text" name="name" class="textBox" id="name" required></dd>
-
                         <dt>
                             <div class="required">
                                 <p>必須</p>
@@ -34,9 +32,8 @@
                         </dt>
                         <dd>
                             <input type="email" name="mail" class="textBox" id="mail"
-                             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required> <!--正規表現を追記する-->
+                             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                         </dd>
-
                         <dt>
                             <div class="required">
                                 <p>必須</p>
@@ -44,7 +41,7 @@
                             <label for="password">パスワード (半角英数6文字以上）</label> 
                         </dt>
                         <dd>
-                            <input type="password" name="password" class="textBox" id="password" pattern="^[a-zA-Z0-9]{6,}$" required> <!--正規表現を追記する-->
+                            <input type="password" name="password" class="textBox" id="password" pattern="^[a-zA-Z0-9]{6,}$" required>
                         </dd>
                         <dt>
                             <div class="required">
@@ -55,11 +52,8 @@
                         <dd>
                             <input type="password" name="confirm_password" class="textBox" id="confirm" oninput="ConfirmPassword(this)" required> 
                         </dd>
-                            <!--oninput =イベントハンドラ(イベントが発生したら○○を処理する）-->
-                            <!--パスワード確認部分 コードの意味は↓のscript文につながる-->
-
                         <dt>プロフィール写真</dt>
-                        <input type="hidden" name="maxFile" value="5000000"> <!--ファイルサイズの上限を決める-->
+                        <input type="hidden" name="maxFile" value="5000000">
                         <dd><input type="file" name="picture" size="50"></dd>
                        
                         <dt><label for="comments">コメント</label></dt>
@@ -77,16 +71,10 @@
 
         <script>
             function ConfirmPassword(confirm) {
-                //上で設定した関数名(id値)
                 var input1 = password.value;
-                    //最初のパスワード入力欄のid値.value  ※valueの意味は、(id="password"に入力された中身を指している)
                 var input2 = confirm.value;
-                    //パスワード確認入力欄のid値.value
                 if(input1 != input2) {
                     confirm.setCustomValidity("パスワードが一致しません。");
-                        //「confirm("") = 確認ダイアログ
-                        //「setCustomValodity」= HTML5のバリデーション機能
-                        //意味は・・・
                 } else {
                     confirm.setCustomValidity("");
                 }

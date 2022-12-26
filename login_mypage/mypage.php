@@ -2,42 +2,27 @@
 mb_internal_encoding("utf8");
 session_start();
 
-//▼🌟既にログインされている状態（SESSEIONが存在している）なら、以下のコードは実行しなくて良い
 if(empty($_SESSION['id'])) {
-//（ログインの情報が残っていない場合に☟の処理を行う）
-    
-    //▼try文で書いているので、書かなくて良い
-    $pdo = new PDO("mysql:dbname=lesson01;host=localhost;","root","");
-    //▼ try catch文。DB接続出来なければ、エラーメッセージを表示するという例外処理を行う文。
+    $pdo = new PDO("mysql:dbname=lesson01;host=localhost;","root","mysql");
     try {
-        $pdo = new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+        $pdo = new PDO("mysql:dbname=lesson01;host=localhost;","root","mysql");
     } catch(PDOException $e) {
         die("
-        <p>申し訳ございません、現在サーバーが混みあっており一時的にアクセスが出来ません。<br>
-        しばらくしてから再度ログインをして下さい。</p>
-        <a href='http://localhost/login_mypage/login.php'>ログイン画面へ</a>
+            <p>申し訳ございません、現在サーバーが混みあっており一時的にアクセスが出来ません。<br>
+            しばらくしてから再度ログインをして下さい。</p>
+            <a href='http://localhost/login_mypage/login.php'>ログイン画面へ</a>
         ");
     }
-
-    //▼ select文を使って、tableに入れたpost値を取得する
-    //※DBとPOSTのデータを照合させる
     $stmt = $pdo->prepare("select * from login_mypage where mail=? && password=?");
-    //mailカラムのとpasswordカラムの値が?(login.phpのpostデータと同じ)のものが取得される
-    //?としたのは、login postから送られてきたデータが変数の為
 
-    //▼ プレースホルダに値をバインドする
-    //login.phpからpostされた値を入れる
     $stmt->bindValue(1,$_POST['mail']);
     $stmt->bindValue(2,$_POST['password']);
-    //bindValue(パラメータID,$バインドする値)
-    //↪パラメータID：プレースホルダの?の位置
+
     $stmt->execute();
-    $pdo = NULL;//DB切断
+    $pdo = NULL;
 
-    //▼ select文で取得した配列（カラム）の値を取得する = fetch
-    while($row = $stmt->fetch()) { //while = ループ処理を行うという意味。
+    while($row = $stmt->fetch()) {
 
-        //▼ループする内容
         $_SESSION['id'] = $row['id'];
         $_SESSION['name'] = $row['name'];
         $_SESSION['mail'] = $row['mail'];
@@ -46,22 +31,20 @@ if(empty($_SESSION['id'])) {
         $_SESSION['comments'] = $row['comments'];
     }
 
-    if(empty($_SESSION['id'])) { //もしSESSION['id']が空だったら（照合したカラムにDBの情報が無かったら）
-        header("Location:login_error.php");//リダイレクトでlogin_error.phpページへ飛ぶ
+    if(empty($_SESSION['id'])) {
+        header("Location:login_error.php");
     }
-    if(!empty($_POST['checkbox'])) { //もしPOST['checkbox']に☑が入っていたら
-        $_SESSION['checkbox'] = $_POST['checkbox'];//POST値checkboxをsessionする
+    if(!empty($_POST['checkbox'])) {
+        $_SESSION['checkbox'] = $_POST['checkbox'];
 
     }
 }
-
-//▼🌟既にログインされている状態かつ、SESSION[checkbox]に☑が入っていたら
 if(!empty($_SESSION['id']) && !empty($_SESSION['checkbox'])) {
-    setcookie('mail',$_SESSION['mail'],time()+60*60*24*7);//cookieを設定する（ログアウトやブラウザを閉じたりするまではcookieが残る状態）
+    setcookie('mail',$_SESSION['mail'],time()+60*60*24*7);
     setcookie('password',$_SESSION['password'],time()+60*60*24*7);
     setcookie('checkbox',$_SESSION['checkbox'],time()+60*60*24*7);
 } else if(empty($_SESSION['checkbox'])) {
-    setcookie('mail','',time()-1);//cookieからデータを削除する（cookieを設定していなくても、これを記述しないと、データが残ってしまう）
+    setcookie('mail','',time()-1);
     setcookie('password','',time()-1);
     setcookie('checkbox','',time()-1);
 }
@@ -98,7 +81,6 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['checkbox'])) {
                         <label>メールアドレス：</label>
                         <?php echo $_SESSION['mail'];?><br><br>
 
-
                         <label>パスワード：</label>
                         <?php echo $_SESSION['password'];?><br><br>
                     </div>
@@ -107,10 +89,7 @@ if(!empty($_SESSION['id']) && !empty($_SESSION['checkbox'])) {
                 <div class="submitBox">
                     <form method="post" action="mypage_hensyu.php">
                         <input type="submit" value="編集する" class="submit">
-                        <!--▼ mypage_hensyu.phpへのアクセスを、mypage.phpの編集ボタンでしかアクセス出来ない様にする
-                        ※今の状態だと、アドレスバーに入力でアクセス出来てしまう為-->
-                        <input type="hidden" value="<?php echo rand(1,10);?>" name="rand"><!--value値が送る内容-->
-                        <!--続きはhensyuページへ-->
+                        <input type="hidden" value="<?php echo rand(1,10);?>" name="rand">
                     </form>
                 </div>
             </div>

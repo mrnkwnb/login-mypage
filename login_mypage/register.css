@@ -8,7 +8,6 @@ header,footer {
 header {
     height: 50px;
     box-shadow: 0 3px 5px 0 lightgray;
-                /*X Y ぼかし分量 ぼかし分量 色*/
     margin-bottom: 2rem;
 }
 footer {
@@ -45,9 +44,9 @@ header img {
     border-radius: 5px;
     clear: right;
 }
-.formOnlyMypage { /*mypage.php のみ*/
+.formOnlyMypage {
     margin: 0 auto;
-    width: 700px; /*!!!修正箇所!!!*/
+    width: 700px;
     height: auto;
     padding: 1rem;
     padding-bottom: 2rem;
@@ -55,7 +54,7 @@ header img {
     border-radius: 5px;
     clear: right;
 }
-.error { /*login_error.php のみ*/
+.error {
     width: 400px;
     height: 2rem;
     background-color: rgb(242, 158, 172);
@@ -64,7 +63,7 @@ header img {
     text-align: center;
     margin: 0 auto;
 }
-.error p { /*login_error.php のみ*/
+.error p {
     line-height: 2;
 }
 h1 {
@@ -72,23 +71,23 @@ h1 {
     border-bottom: 3px solid lightseagreen;
     text-align: center;
 }
-.confirm { /*register_confirm.php のみ*/
+.confirm {
     text-align: center;
 }
-.myPage { /*mypage.php のみ*/
+.myPage {
     border-bottom: 2px solid rgb(235, 229, 229);
     margin-bottom: 1rem;
 }
-.myPage1 { /*mypage.php のみ*/
+.myPage1 {
     display: inline-block;
     vertical-align: top;
     width: 130px;
     text-align: center;
 }
-.myPage1 img { /*mypage.php のみ*/
+.myPage1 img {
     width: 130px;
 }
-.myPage2 { /*mypage.php のみ*/
+.myPage2 {
     display: inline-block;
     vertical-align: top;
     margin-left: 2rem;
@@ -132,7 +131,7 @@ dd .textArea {
 .submitBox {
     text-align: center;
 }
-.formSubmit { /*register_confirm.php のみ　formをインライン要素にして横並びにする為*/
+.formSubmit {
     display: inline-block;
 }
 .submit {
@@ -155,9 +154,9 @@ dd .textArea {
     border :none;
     box-shadow: 0 3px 3px 0 rgb(133, 127, 127);
 }
-.confirmImage { /*register_confirmのみ*/
+.confirmImage {
     display: inline;
 }
-.confirmImage img { /*register_confirmのみ*/
+.confirmImage img {
     width: 130px;
 }

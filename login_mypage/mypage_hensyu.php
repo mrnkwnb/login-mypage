@@ -1,8 +1,6 @@
 <?php
 mb_internal_encoding("utf8");
 session_start();
-
-//▼mypage.phpからのpost通信で、乱数を取得出来ない場合はlogin_errorへダイレクトする
 if(empty($_POST['rand'])) {
     header("Location:login_error.php");
 }
@@ -30,11 +28,10 @@ if(empty($_POST['rand'])) {
                 </p>
                 <form method="post" action="mypage_update.php">
                     <div class="myPage">
-
                         <div class="myPage1">
                             <img src="<?php echo $_SESSION['picture'];?>">
                         </div>
-
+                        
                         <div class="myPage2">
                             <label>氏名：</label>
                             <input type="text" name="name" class="textBox" id="name"
@@ -51,7 +48,7 @@ if(empty($_POST['rand'])) {
 
                     </div>
                     
-                    <textarea name="comments" id="comments"><?php echo $_SESSION['comments'];?></textarea><br><br> <!--textareaはvalueで初期値を設定しない-->
+                    <textarea name="comments" id="comments"><?php echo $_SESSION['comments'];?></textarea><br><br>
                     <div class="submitBox">
                         <input type="submit" value="この内容に変更する" class="submit">
                     </div>
