@@ -1,0 +1,163 @@
+html {
+    font-family: 'Arial','メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+}
+header,footer {
+    width: 100%;
+    color: lightgrey;
+}
+header {
+    height: 50px;
+    box-shadow: 0 3px 5px 0 lightgray;
+                /*X Y ぼかし分量 ぼかし分量 色*/
+    margin-bottom: 2rem;
+}
+footer {
+    height: 36px;
+    box-shadow: 0 -3px 5px 0 lightgray;
+    margin-top: 3rem;
+    text-align: center;
+}
+footer p {
+    font-size: 13px;
+    line-height: 3;
+}
+.header {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+}
+.login {
+    display: inline;
+    float: right;
+    margin-right: 1rem;
+}
+header img {
+    height: 40px;
+}
+.form {
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 3px 3px 6px 3px lightgray;
+    border-radius: 5px;
+    clear: right;
+}
+.formOnlyMypage { /*mypage.php のみ*/
+    margin: 0 auto;
+    width: 700px; /*!!!修正箇所!!!*/
+    height: auto;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 3px 3px 6px 3px lightgray;
+    border-radius: 5px;
+    clear: right;
+}
+.error { /*login_error.php のみ*/
+    width: 400px;
+    height: 2rem;
+    background-color: rgb(242, 158, 172);
+    color: rgb(224, 41, 41);
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+}
+.error p { /*login_error.php のみ*/
+    line-height: 2;
+}
+h1 {
+    font-size: 20px;
+    border-bottom: 3px solid lightseagreen;
+    text-align: center;
+}
+.confirm { /*register_confirm.php のみ*/
+    text-align: center;
+}
+.myPage { /*mypage.php のみ*/
+    border-bottom: 2px solid rgb(235, 229, 229);
+    margin-bottom: 1rem;
+}
+.myPage1 { /*mypage.php のみ*/
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+    text-align: center;
+}
+.myPage1 img { /*mypage.php のみ*/
+    width: 130px;
+}
+.myPage2 { /*mypage.php のみ*/
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2rem;
+}
+dt {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+.required {
+    display: inline-block;
+    background-color: lightseagreen;
+    width: 2.3rem;
+    height: 22px;
+    text-align: center;
+    margin-right: 4px;
+}
+.required p {
+    line-height: 2;
+    font-size: 11px;
+    color: aliceblue;
+    margin: 0;
+}
+dd {
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+}
+dd .textBox {
+    width: 20rem;
+    height: 1.3rem;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+}
+dd .textArea {
+    width: 22rem;
+    height: 4rem;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+}
+.submitBox {
+    text-align: center;
+}
+.formSubmit { /*register_confirm.php のみ　formをインライン要素にして横並びにする為*/
+    display: inline-block;
+}
+.submit {
+    background-color: lightseagreen;
+    width: 8rem;
+    height: 2rem;
+    color: aliceblue;
+    text-align: center;
+    line-height: 2;
+    border :none;
+    box-shadow: 0 3px 3px 0 rgb(17, 96, 92);
+}
+.submitReturn {
+    background-color: lightgray;
+    width: 9rem;
+    height: 2rem;
+    color: aliceblue;
+    text-align: center;
+    line-height: 2;
+    border :none;
+    box-shadow: 0 3px 3px 0 rgb(133, 127, 127);
+}
+.confirmImage { /*register_confirmのみ*/
+    display: inline;
+}
+.confirmImage img { /*register_confirmのみ*/
+    width: 130px;
+}
